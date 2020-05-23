@@ -23,6 +23,7 @@
 
 
 Important resource :
+
 http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/
 https://divan.dev/posts/go_concurrency_visualize/
 https://medium.com/hackernoon/dancing-with-go-s-mutexes-92407ae927bf#.wjr1u2xjm
