@@ -24,6 +24,7 @@
 
 Important resource :
 
+https://docs.google.com/document/d/1ckYpi6hcRkaBUEk975f54oGsHYHu7GhzOk7-nOrkNxo/edit#
 http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/
 https://divan.dev/posts/go_concurrency_visualize/
 https://medium.com/hackernoon/dancing-with-go-s-mutexes-92407ae927bf#.wjr1u2xjm
