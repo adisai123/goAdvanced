@@ -8,15 +8,23 @@ A race condition is when two or more routines have access to the same resource, 
 mutex : to overcome race conditon :
 A Mutex, or a mutual exclusion is a mechanism that allows us to prevent concurrent processes from entering a critical section of data whilst it’s already being executed by a given process.
 
+Atomic : used for synchronize algorithm used to avoid race condition
+    
+method set -  A type may have a method associated with it is called method set 
+            abc type int 
+            func (t *abc) printMe() 
+            func (t abc) printMe()  
+            Receiver  value 
+            -------------------
+            (t T)      T and *T
+            (t T)         *T
 
+func init() {} - can be added to any go file , you can add any number of init () function in a single go file ( you can not explicitly call init()) 
 
+packages: runtime, "golang.org/x/crypto/bcrypt"
 
-
-
-
-
-
-
+func Gosched(): (package runtime)
+how to yield : allow other routines to run  
 
 
 
@@ -39,17 +47,5 @@ https://github.com/GoesToEleven/go-programming
 https://github.com/GoesToEleven/GolangTraining
 
 
-func init() {} - can be added to any go file , you can add any number of init () function in a single go file ( you can not explicitly call init()) 
-
 youtube : = rob pike concurrency parallelism
 
-packages: runtime, "golang.org/x/crypto/bcrypt"
-
-method set -  A type may have a method associated with it is called method set 
-            abc type int 
-            func (t *abc) printMe() 
-            func (t abc) printMe()  
-            Receiver  value 
-            -------------------
-            (t T)      T and *T
-            (t T)         *T
