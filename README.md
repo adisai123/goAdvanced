@@ -44,3 +44,12 @@ func init() {} - can be added to any go file , you can add any number of init ()
 youtube : = rob pike concurrency parallelism
 
 packages: runtime, "golang.org/x/crypto/bcrypt"
+
+method set -  A type may have a method associated with it is called method set 
+            abc type int 
+            func (t *abc) printMe() 
+            func (t abc) printMe()  
+            Receiver  value 
+            -------------------
+            (t T)      T and *T
+            (t T)         *T
