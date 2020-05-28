@@ -1,6 +1,6 @@
 # goAdvanced
 
-concurrency : multiple computations happning same time (when 2 task are overlapping is concurrency )  its a design pattern
+concurrency : multiple computations happning same time (when 2 task are overlapping is concurrency )  its a design pattern , allow to run multiple go routine at the same time.
 
 race condition : 
 A race condition is when two or more routines have access to the same resource, such as a variable or data structure and attempt to read and write to that resource without any regard to the other routines. This type of code can create the craziest and most random bugs you have ever seen. 
@@ -9,7 +9,17 @@ mutex : to overcome race conditon :
 A Mutex, or a mutual exclusion is a mechanism that allows us to prevent concurrent processes from entering a critical section of data whilst it’s already being executed by a given process.
 
 Atomic : used for synchronize algorithm used to avoid race condition
-    
+
+chan (channel) :=  You can not use send and receive at the same time or at the same function. 
+                c := make(chan int)
+                c <- 10 ///send
+                 <- c     //receive
+
+                 directional channel :
+                 c := make(chan <- int) 
+                c<- 10 
+                <- c  //not possible
+
 method set -  A type may have a method associated with it is called method set 
             abc type int 
             func (t *abc) printMe() 
