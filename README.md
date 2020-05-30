@@ -10,6 +10,8 @@ A Mutex, or a mutual exclusion is a mechanism that allows us to prevent concurre
 
 Atomic : used for synchronize algorithm used to avoid race condition
 
+Semaphore: a semaphore is a variable or abstract data type used to control access to a common resource by multiple processes in a concurrent system such as a multitasking operating system.
+
 chan (channel) :=  You can not use send and receive at the same time or at the same function. 
                 c := make(chan int)
                 c <- 10 ///send
@@ -19,6 +21,24 @@ chan (channel) :=  You can not use send and receive at the same time or at the s
                  c := make(chan <- int) 
                 c<- 10 
                 <- c  //not possible
+chanels : are like relay racer , you put on it and it stops until some one takes it (unless you using buffered channel). 
+when called close() function you can not put value to channel but you can read from it.
+
+if range is used then you need to use close in the channel:
+     c := make(chan int)
+	for i := 0; i < 10; i++ {
+		go func() {
+			for i := 0; i < 100; i++ {
+				c <- i
+
+			}
+			close(c)
+		}()
+	}
+
+	for c1 := range c { // with the range code block here. until it gets values.
+		fmt.Println(c1)
+	}
 
 method set -  A type may have a method associated with it is called method set 
             abc type int 
@@ -81,24 +101,7 @@ Panic(): a built-in function that stops the ordinary flow of control and begingi
 
 Recover is the built-in function that regains control of a panicking routine. useful in the defered function , useful to resume call.
 
-chanels : are like relay racer , you put on it and it stops until some one takes it (unless you using buffered channel). 
-when called close() function you can not put value to channel but you can read from it.
 
-if range is used then you need to use close in the channel:
-     c := make(chan int)
-	for i := 0; i < 10; i++ {
-		go func() {
-			for i := 0; i < 100; i++ {
-				c <- i
-
-			}
-			close(c)
-		}()
-	}
-
-	for c1 := range c { // with the range code block here. until it gets values.
-		fmt.Println(c1)
-	}
 
 
 Important resource :
