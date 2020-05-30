@@ -41,7 +41,7 @@ When a request is canceled or timed out, all the routines working on that reques
 withCanel : arranges for done to be closed when cancel called 
 withDedline: arragnges for done to be closed when deadline called 
 
-+500
+
 A select is only used with channels.
 
 A switch is used with concrete types.
@@ -59,21 +59,6 @@ case int32:
      fmt.Println("an int32.")
 
 
-if range is used then you need to use close in the channel:
-     c := make(chan int)
-	for i := 0; i < 10; i++ {
-		go func() {
-			for i := 0; i < 100; i++ {
-				c <- i
-
-			}
-			close(c)
-		}()
-	}
-
-	for c1 := range c {
-		fmt.Println(c1)
-	}
 
 Error handling :
 Do does not have exceptions (as goes multi value return (from function ) makes it easy to report error without overloading the return values)
@@ -95,6 +80,26 @@ it has a func New(text string) error
 Panic(): a built-in function that stops the ordinary flow of control and beginging panicking. when a function calls panic , execution stops , any defered function registered will be executed.
 
 Recover is the built-in function that regains control of a panicking routine. useful in the defered function , useful to resume call.
+
+chanels : are like relay racer , you put on it and it stops until some one takes it (unless you using buffered channel). 
+when called close() function you can not put value to channel but you can read from it.
+
+if range is used then you need to use close in the channel:
+     c := make(chan int)
+	for i := 0; i < 10; i++ {
+		go func() {
+			for i := 0; i < 100; i++ {
+				c <- i
+
+			}
+			close(c)
+		}()
+	}
+
+	for c1 := range c { // with the range code block here. until it gets values.
+		fmt.Println(c1)
+	}
+
 
 Important resource :
 https://godoc.org/golang.org
