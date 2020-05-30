@@ -36,12 +36,65 @@ packages: runtime, "golang.org/x/crypto/bcrypt"
 func Gosched(): (package runtime)
 how to yield : allow other routines to run  
 
+context pattern in go : - Request handlers often start additional go routines to access backends such as databases  and RPC services.
+When a request is canceled or timed out, all the routines working on that request need to close quickly. We have context package for that.
+withCanel : arranges for done to be closed when cancel called 
+withDedline: arragnges for done to be closed when deadline called 
+
++500
+A select is only used with channels.
+
+A switch is used with concrete types.
+
+A select will choose multiple valid options at random, while aswitch will go in sequence (and would require a fallthrough to match multiple.)
+
+Note that a switch can also go over types for interfaces when used with the keyword .(type)
+
+var a interface{}
+a = 5
+switch a.(type) {
+case int:
+     fmt.Println("an int.")
+case int32:
+     fmt.Println("an int32.")
 
 
+if range is used then you need to use close in the channel:
+     c := make(chan int)
+	for i := 0; i < 10; i++ {
+		go func() {
+			for i := 0; i < 100; i++ {
+				c <- i
 
+			}
+			close(c)
+		}()
+	}
 
+	for c1 := range c {
+		fmt.Println(c1)
+	}
 
+Error handling :
+Do does not have exceptions (as goes multi value return (from function ) makes it easy to report error without overloading the return values)
 
+defer: you can add as many defer as you can , it will be executed in revers sequences.
+         if program exists before defer function call statement position sequence, then it wont call defer (LIFO)
+         you can not use combination of both go and defer keywoard
+
+error is just another type (interface). 
+
+type error interface {
+     Error() string
+}
+if you want to create custom error type you need to implement Error() method.
+
+errors packages: (implements error interface)
+it has a func New(text string) error  
+
+Panic(): a built-in function that stops the ordinary flow of control and beginging panicking. when a function calls panic , execution stops , any defered function registered will be executed.
+
+Recover is the built-in function that regains control of a panicking routine. useful in the defered function , useful to resume call.
 
 Important resource :
 https://godoc.org/golang.org
@@ -59,3 +112,7 @@ https://github.com/GoesToEleven/GolangTraining
 
 youtube : = rob pike concurrency parallelism
 
+
+toDo : 
+
+fanout pattern in go 
