@@ -1,33 +1,38 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"os"
 	"sync"
 )
 
-var Wait sync.WaitGroup
-var Counter int = 0
+var wait sync.WaitGroup
+var counter int = 0
 
 func main() {
+	fs, err := os.Create("log.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.SetOutput(fs)
+	for rout := 1; rout <= 2; rout++ {
 
-	for routine := 1; routine <= 2; routine++ {
-
-		Wait.Add(1)
-		go Routine(routine)
+		wait.Add(1)
+		go routine(rout)
 	}
 
-	Wait.Wait()
-	fmt.Printf("Final Counter: %d\n", Counter)
+	wait.Wait()
+	log.Printf("Final counter: %d\n", counter)
 }
 
-func Routine(id int) {
+func routine(id int) {
 
 	for count := 0; count < 2; count++ {
 
-		value := Counter
+		value := counter
 		value++
-		Counter = value
+		counter = value
 	}
 
-	Wait.Done()
+	wait.Done()
 }

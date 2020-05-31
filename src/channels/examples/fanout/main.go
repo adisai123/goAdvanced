@@ -23,12 +23,12 @@ func main() {
 
 func producer(c chan string) {
 	producerID++
-	thisId := producerID
+	thisID := producerID
 	dataID := 0
 	for {
-		fmt.Println("producer prodicing ", thisId)
+		fmt.Println("producer prodicing ", thisID)
 		dataID++
-		c <- fmt.Sprintf("data from publisher %d . data  %d", thisId, dataID)
+		c <- fmt.Sprintf("data from publisher %d . data  %d", thisID, dataID)
 	}
 }
 
