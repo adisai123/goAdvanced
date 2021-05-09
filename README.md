@@ -120,8 +120,8 @@ https://github.com/GoesToEleven/GolangTraining
 
 youtube : = rob pike concurrency parallelism
 
-| #Value - Type |  #int | #float | #string | #bool | #struct | 
-| #Reference - Type | #slices | maps | channels | pointers | functions | 
+| Value - Type |  int | float | string | bool | struct | 
+| Reference - Type | slices | maps | channels | pointers | functions | 
 
 
 
