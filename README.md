@@ -120,8 +120,49 @@ https://github.com/GoesToEleven/GolangTraining
 
 youtube : = rob pike concurrency parallelism
 
-| Value - Type |  int | float | string | bool | struct | 
-| Reference - Type | slices | maps | channels | pointers | functions | 
+Value Type - int float string bool struct 
+
+
+Reference type -  slices maps channels pointers functions 
+
+
+```
+package main
+
+import "fmt"
+
+type digits struct {
+	positive int
+}
+
+func (d digits) print() {
+	fmt.Printf("I am printing digits : %+v\n", d)
+}
+func (d digits) modifyBy1() {
+	d.positive = d.positive + 1
+}
+
+func (d *digits) incrementDigit() {
+	(*d).positive = (*d).positive + 1
+}
+
+func (d *digits) decrementDigit() {
+	d.positive--
+}
+func main() {
+	ten := digits{10}
+	ten.print()
+	ten.modifyBy1()
+	println("after modification") //10
+	ten.print()
+	println("after modification") //11
+	ten.incrementDigit()
+	ten.print()
+	println("after modification") // 10
+	ten.decrementDigit()  // this type is alos possible 
+	ten.print()
+}
+```
 
 
 
